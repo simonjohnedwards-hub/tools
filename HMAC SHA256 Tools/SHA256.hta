@@ -1,0 +1,40 @@
+
+<html> 
+<head> 
+<hta:application> 
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">  
+<META HTTP-EQUIV="MSThemeCompatible" CONTENT="Yes"> 
+<title>Calculate SHA256</title> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-hex.min.js"></script>
+
+<script language="javascript">  
+ 
+	window.resizeTo(800,600);
+	
+	function calculateHash() {
+		document.getElementById("outputBase64").value = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(document.getElementById("productID").value, document.getElementById("password").value));
+		document.getElementById("outputHex").value = CryptoJS.enc.Hex.stringify(CryptoJS.HmacSHA256(document.getElementById("productID").value, document.getElementById("password").value));
+	}
+ 
+</script> 
+</head> 
+
+<body> 
+<style>
+body {
+    background-color: #777777;
+}
+</style>
+
+<p style="font-family:verdana; text-align:left; font-size:20; color:white;">Product ID:<input style="height:40px;width:700px" type="text" name="productID" size="24"></p> 
+<p style="font-family:verdana; text-align:left; font-size:20; color:white;">Password:<input style="height:40px;width:700px" type="text" name="password" size="24"></p> 
+<input style="height:40px;width:300px" type="button" value="Run" name="run_button"  onClick="calculateHash()"></p> 
+<p style="font-family:verdana; text-align:left; font-size:20; color:black;">SHA256 Base64<input style="height:40px;width:700px" type="text" id="outputBase64" value=""></input><p> 
+<p style="font-family:verdana; text-align:left; font-size:20; color:black;">SHA256 Hex<input style="height:40px;width:700px" type="text" id="outputHex" value=""></input><p> 
+
+</body> 
+</html> 
